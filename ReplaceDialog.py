@@ -1,7 +1,7 @@
 from tkinter import *
 
-from idlelib import SearchEngine
-from idlelib.SearchDialogBase import SearchDialogBase
+import SearchEngine
+from SearchDialogBase import SearchDialogBase
 import re
 
 
@@ -217,5 +217,5 @@ def _replace_dialog(parent):
     button.pack()
 
 if __name__ == '__main__':
-    from idlelib.idle_test.htest import run
+    from idle_test.htest import run
     run(_replace_dialog)

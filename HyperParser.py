@@ -7,7 +7,7 @@ the structure of code.
 
 import string
 from keyword import iskeyword
-from idlelib import PyParse
+import PyParse
 
 
 # all ASCII chars that may be in an identifier
@@ -310,4 +310,4 @@ class HyperParser:
 
 if __name__ == '__main__':
     import unittest
-    unittest.main('idlelib.idle_test.test_hyperparser', verbosity=2)
+    unittest.main('idle_test.test_hyperparser', verbosity=2)

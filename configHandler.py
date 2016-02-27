@@ -374,7 +374,7 @@ class IdleConf:
     def CurrentTheme(self):
         """Return the name of the currently active text color theme.
 
-        idlelib.config-main.def includes this section
+        config-main.def includes this section
         [Theme]
         default= 1
         name= IDLE Classic

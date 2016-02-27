@@ -7,7 +7,7 @@ import os
 import sys
 import string
 
-from idlelib.configHandler import idleConf
+from configHandler import idleConf
 
 # This string includes all chars that may be in an identifier
 ID_CHARS = string.ascii_letters + string.digits + "_"
@@ -15,8 +15,8 @@ ID_CHARS = string.ascii_letters + string.digits + "_"
 # These constants represent the two different types of completions
 COMPLETE_ATTRIBUTES, COMPLETE_FILES = range(1, 2+1)
 
-from idlelib import AutoCompleteWindow
-from idlelib.HyperParser import HyperParser
+import AutoCompleteWindow
+from HyperParser import HyperParser
 
 import __main__
 
@@ -230,4 +230,4 @@ class AutoComplete:
 
 if __name__ == '__main__':
     from unittest import main
-    main('idlelib.idle_test.test_autocomplete', verbosity=2)
+    main('idle_test.test_autocomplete', verbosity=2)

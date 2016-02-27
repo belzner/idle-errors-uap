@@ -7,15 +7,15 @@ import threading
 import queue
 import tkinter
 
-from idlelib import CallTips
-from idlelib import AutoComplete
+import CallTips
+import AutoComplete
 
-from idlelib import RemoteDebugger
-from idlelib import RemoteObjectBrowser
-from idlelib import StackViewer
-from idlelib import rpc
-from idlelib import PyShell
-from idlelib import IOBinding
+import RemoteDebugger
+import RemoteObjectBrowser
+import StackViewer
+import rpc
+import PyShell
+import IOBinding
 
 import __main__
 

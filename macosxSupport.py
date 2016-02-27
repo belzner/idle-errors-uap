@@ -124,8 +124,8 @@ def overrideRootMenu(root, flist):
     # Due to a (mis-)feature of TkAqua the user will also see an empty Help
     # menu.
     from tkinter import Menu
-    from idlelib import Bindings
-    from idlelib import WindowList
+    import Bindings
+    import WindowList
 
     closeItem = Bindings.menudefs[0][1][-2]
 
@@ -161,13 +161,13 @@ def overrideRootMenu(root, flist):
     def about_dialog(event=None):
         "Handle Help 'About IDLE' event."
         # Synchronize with EditorWindow.EditorWindow.about_dialog.
-        from idlelib import aboutDialog
+        import aboutDialog
         aboutDialog.AboutDialog(root, 'About IDLE')
 
     def config_dialog(event=None):
         "Handle Options 'Configure IDLE' event."
         # Synchronize with EditorWindow.EditorWindow.config_dialog.
-        from idlelib import configDialog
+        import configDialog
 
         # Ensure that the root object has an instance_dict attribute,
         # mirrors code in EditorWindow (although that sets the attribute
@@ -179,7 +179,7 @@ def overrideRootMenu(root, flist):
     def help_dialog(event=None):
         "Handle Help 'IDLE Help' event."
         # Synchronize with EditorWindow.EditorWindow.help_dialog.
-        from idlelib import help
+        import help
         help.show_idlehelp(root)
 
     root.bind('<<about-idle>>', about_dialog)

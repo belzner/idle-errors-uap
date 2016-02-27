@@ -17,8 +17,8 @@
 import os
 from tkinter import *
 
-from idlelib import ZoomHeight
-from idlelib.configHandler import idleConf
+import ZoomHeight
+from configHandler import idleConf
 
 ICONDIR = "Icons"
 
@@ -462,5 +462,5 @@ def _tree_widget(parent):
     root.mainloop()
 
 if __name__ == '__main__':
-    from idlelib.idle_test.htest import run
+    from idle_test.htest import run
     run(_tree_widget)

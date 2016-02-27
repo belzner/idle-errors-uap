@@ -4,9 +4,9 @@ import linecache
 import re
 import tkinter as tk
 
-from idlelib.TreeWidget import TreeNode, TreeItem, ScrolledCanvas
-from idlelib.ObjectBrowser import ObjectTreeItem, make_objecttreeitem
-from idlelib.PyShell import PyShellFileList
+from TreeWidget import TreeNode, TreeItem, ScrolledCanvas
+from ObjectBrowser import ObjectTreeItem, make_objecttreeitem
+from PyShell import PyShellFileList
 
 def StackBrowser(root, flist=None, tb=None, top=None):
     if top is None:
@@ -147,5 +147,5 @@ def _stack_viewer(parent):
     del sys.last_traceback
 
 if __name__ == '__main__':
-    from idlelib.idle_test.htest import run
+    from idle_test.htest import run
     run(_stack_viewer)

@@ -2,9 +2,9 @@ import os
 import sys
 import importlib.machinery
 
-from idlelib.TreeWidget import TreeItem
-from idlelib.ClassBrowser import ClassBrowser, ModuleBrowserTreeItem
-from idlelib.PyShell import PyShellFileList
+from TreeWidget import TreeItem
+from ClassBrowser import ClassBrowser, ModuleBrowserTreeItem
+from PyShell import PyShellFileList
 
 
 class PathBrowser(ClassBrowser):
@@ -102,7 +102,7 @@ def _path_browser(parent):  # htest #
 
 if __name__ == "__main__":
     from unittest import main
-    main('idlelib.idle_test.test_pathbrowser', verbosity=2, exit=False)
+    main('idle_test.test_pathbrowser', verbosity=2, exit=False)
 
-    from idlelib.idle_test.htest import run
+    from idle_test.htest import run
     run(_path_browser)

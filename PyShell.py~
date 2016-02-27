@@ -24,16 +24,16 @@ except ImportError:
     sys.exit(1)
 import tkinter.messagebox as tkMessageBox
 
-from idlelib.EditorWindow import EditorWindow, fixwordbreaks
-from idlelib.FileList import FileList
-from idlelib.ColorDelegator import ColorDelegator
-from idlelib.UndoDelegator import UndoDelegator
-from idlelib.OutputWindow import OutputWindow
-from idlelib.configHandler import idleConf
-from idlelib import rpc
-from idlelib import Debugger
-from idlelib import RemoteDebugger
-from idlelib import macosxSupport
+from EditorWindow import EditorWindow, fixwordbreaks
+from FileList import FileList
+from ColorDelegator import ColorDelegator
+from UndoDelegator import UndoDelegator
+from OutputWindow import OutputWindow
+from configHandler import idleConf
+import rpc
+import Debugger
+import RemoteDebugger
+import macosxSupport
 
 HOST = '127.0.0.1' # python execution server on localhost loopback
 PORT = 0  # someday pass in host, port for remote debug capability
@@ -410,8 +410,8 @@ class ModifiedInterpreter(InteractiveInterpreter):
         # run from the IDLE source directory.
         del_exitf = idleConf.GetOption('main', 'General', 'delete-exitfunc',
                                        default=False, type='bool')
-        if __name__ == 'idlelib.PyShell':
-            command = "__import__('idlelib.run').run.main(%r)" % (del_exitf,)
+        if __name__ == '.PyShell':
+            command = "__import__('.run').run.main(%r)" % (del_exitf,)
         else:
             command = "__import__('run').main(%r)" % (del_exitf,)
         return [sys.executable] + w + ["-c", command, str(self.port)]
@@ -613,13 +613,13 @@ class ModifiedInterpreter(InteractiveInterpreter):
         return
 
     def remote_stack_viewer(self):
-        from idlelib import RemoteObjectBrowser
+        import RemoteObjectBrowser
         oid = self.rpcclt.remotequeue("exec", "stackviewer", ("flist",), {})
         if oid is None:
             self.tkconsole.root.bell()
             return
         item = RemoteObjectBrowser.StubObjectTreeItem(self.rpcclt, oid)
-        from idlelib.TreeWidget import ScrolledCanvas, TreeNode
+        from TreeWidget import ScrolledCanvas, TreeNode
         top = Toplevel(self.tkconsole.root)
         theme = idleConf.CurrentTheme()
         background = idleConf.GetHighlight(theme, 'normal')['background']
@@ -662,7 +662,7 @@ class ModifiedInterpreter(InteractiveInterpreter):
         # at the moment, InteractiveInterpreter expects str
         assert isinstance(source, str)
         #if isinstance(source, str):
-        #    from idlelib import IOBinding
+        #    import IOBinding
         #    try:
         #        source = source.encode(IOBinding.encoding)
         #    except UnicodeError:
@@ -850,7 +850,7 @@ class PyShell(OutputWindow):
 
 
     # New classes
-    from idlelib.IdleHistory import History
+    from IdleHistory import History
 
     def __init__(self, flist=None):
         if use_subprocess:
@@ -888,7 +888,7 @@ class PyShell(OutputWindow):
         self.save_stdout = sys.stdout
         self.save_stderr = sys.stderr
         self.save_stdin = sys.stdin
-        from idlelib import IOBinding
+        import IOBinding
         self.stdin = PseudoInputFile(self, "stdin", IOBinding.encoding)
         self.stdout = PseudoOutputFile(self, "stdout", IOBinding.encoding)
         self.stderr = PseudoOutputFile(self, "stderr", IOBinding.encoding)
@@ -957,7 +957,7 @@ class PyShell(OutputWindow):
                 RemoteDebugger.close_remote_debugger(self.interp.rpcclt)
             self.resetoutput()
             self.console.write("[DEBUG OFF]\n")
-            sys.ps1 = ">>> "
+            sys.ps1 = "Prompt >>> "
             self.showprompt()
         self.set_debugger_indicator()
 
@@ -969,7 +969,7 @@ class PyShell(OutputWindow):
             dbg_gui = Debugger.Debugger(self)
         self.interp.setdebugger(dbg_gui)
         dbg_gui.load_breakpoints()
-        sys.ps1 = "[DEBUG ON]\n>>> "
+        sys.ps1 = "[DEBUG ON]\nPrompt >>> "
         self.showprompt()
         self.set_debugger_indicator()
 
@@ -1241,7 +1241,7 @@ class PyShell(OutputWindow):
                 "(sys.last_traceback is not defined)",
                 parent=self.text)
             return
-        from idlelib.StackViewer import StackBrowser
+        from StackViewer import StackBrowser
         StackBrowser(self.root, self.flist)
 
     def view_restart_mark(self, event=None):

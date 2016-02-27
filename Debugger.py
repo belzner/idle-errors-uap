@@ -1,9 +1,9 @@
 import os
 import bdb
 from tkinter import *
-from idlelib.WindowList import ListedToplevel
-from idlelib.ScrolledList import ScrolledList
-from idlelib import macosxSupport
+from WindowList import ListedToplevel
+from ScrolledList import ScrolledList
+import macosxSupport
 
 
 class Idb(bdb.Bdb):

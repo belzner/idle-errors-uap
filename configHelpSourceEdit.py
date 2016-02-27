@@ -162,5 +162,5 @@ class GetHelpSourceDialog(Toplevel):
         self.destroy()
 
 if __name__ == '__main__':
-    from idlelib.idle_test.htest import run
+    from idle_test.htest import run
     run(GetHelpSourceDialog)

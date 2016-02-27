@@ -10,7 +10,7 @@ import tkinter.filedialog as tkFileDialog
 import tkinter.messagebox as tkMessageBox
 from tkinter.simpledialog import askstring
 
-from idlelib.configHandler import idleConf
+from configHandler import idleConf
 
 
 # Try setting the locale, so that we can find out
@@ -561,5 +561,5 @@ def _io_binding(parent):  # htest #
     IOBinding(editwin)
 
 if __name__ == "__main__":
-    from idlelib.idle_test.htest import run
+    from idle_test.htest import run
     run(_io_binding)

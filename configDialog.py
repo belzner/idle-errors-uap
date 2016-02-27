@@ -14,14 +14,14 @@ import tkinter.messagebox as tkMessageBox
 import tkinter.colorchooser as tkColorChooser
 import tkinter.font as tkFont
 
-from idlelib.configHandler import idleConf
-from idlelib.dynOptionMenuWidget import DynOptionMenu
-from idlelib.keybindingDialog import GetKeysDialog
-from idlelib.configSectionNameDialog import GetCfgSectionNameDialog
-from idlelib.configHelpSourceEdit import GetHelpSourceDialog
-from idlelib.tabbedpages import TabbedPageSet
-from idlelib.textView import view_text
-from idlelib import macosxSupport
+from configHandler import idleConf
+from dynOptionMenuWidget import DynOptionMenu
+from keybindingDialog import GetKeysDialog
+from configSectionNameDialog import GetCfgSectionNameDialog
+from configHelpSourceEdit import GetHelpSourceDialog
+from tabbedpages import TabbedPageSet
+from textView import view_text
+import macosxSupport
 
 class ConfigDialog(Toplevel):
 
@@ -1417,7 +1417,7 @@ class VerticalScrolledFrame(Frame):
 
 if __name__ == '__main__':
     import unittest
-    unittest.main('idlelib.idle_test.test_configdialog',
+    unittest.main('idle_test.test_configdialog',
                   verbosity=2, exit=False)
-    from idlelib.idle_test.htest import run
+    from idle_test.htest import run
     run(ConfigDialog)

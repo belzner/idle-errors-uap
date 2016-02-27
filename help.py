@@ -28,7 +28,7 @@ from html.parser import HTMLParser
 from os.path import abspath, dirname, isdir, isfile, join
 from tkinter import Tk, Toplevel, Frame, Text, Scrollbar, Menu, Menubutton
 from tkinter import font as tkfont
-from idlelib.configHandler import idleConf
+from configHandler import idleConf
 
 use_ttk = False # until available to import
 if use_ttk:
@@ -245,5 +245,5 @@ def show_idlehelp(parent):
     HelpWindow(parent, filename, 'IDLE Help')
 
 if __name__ == '__main__':
-    from idlelib.idle_test.htest import run
+    from idle_test.htest import run
     run(show_idlehelp)

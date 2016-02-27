@@ -1,5 +1,5 @@
-from idlelib.WidgetRedirector import WidgetRedirector
-from idlelib.Delegator import Delegator
+from WidgetRedirector import WidgetRedirector
+from Delegator import Delegator
 
 class Percolator:
 
@@ -100,5 +100,5 @@ def _percolator(parent):
     root.mainloop()
 
 if __name__ == "__main__":
-    from idlelib.idle_test.htest import run
+    from idle_test.htest import run
     run(_percolator)

@@ -13,7 +13,7 @@ import tkinter
 from tkinter.constants import TOP, LEFT, X, W, SUNKEN
 import re
 from sys import maxsize as INFINITY
-from idlelib.configHandler import idleConf
+from configHandler import idleConf
 
 BLOCKOPENERS = {"class", "def", "elif", "else", "except", "finally", "for",
                     "if", "try", "while", "with"}

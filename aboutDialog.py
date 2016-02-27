@@ -5,7 +5,7 @@
 import os
 from sys import version
 from tkinter import *
-from idlelib import textView
+import textView
 
 class AboutDialog(Toplevel):
     """Modal about dialog for idle
@@ -145,5 +145,5 @@ class AboutDialog(Toplevel):
         self.destroy()
 
 if __name__ == '__main__':
-    from idlelib.idle_test.htest import run
+    from idle_test.htest import run
     run(AboutDialog)

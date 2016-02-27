@@ -3,7 +3,7 @@
 import re
 import sys
 
-from idlelib import macosxSupport
+import macosxSupport
 
 class ZoomHeight:
 

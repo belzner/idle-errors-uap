@@ -81,6 +81,6 @@ def view_file(parent, title, filename, encoding=None, modal=True):
 
 if __name__ == '__main__':
     import unittest
-    unittest.main('idlelib.idle_test.test_textview', verbosity=2, exit=False)
-    from idlelib.idle_test.htest import run
+    unittest.main('idle_test.test_textview', verbosity=2, exit=False)
+    from idle_test.htest import run
     run(TextViewer)

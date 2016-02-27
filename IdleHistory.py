@@ -1,6 +1,6 @@
 "Implement Idle Shell history mechanism with History class"
 
-from idlelib.configHandler import idleConf
+from configHandler import idleConf
 
 class History:
     ''' Implement Idle Shell history mechanism.
@@ -101,4 +101,4 @@ class History:
 
 if __name__ == "__main__":
     from unittest import main
-    main('idlelib.idle_test.test_idlehistory', verbosity=2, exit=False)
+    main('idle_test.test_idlehistory', verbosity=2, exit=False)

@@ -11,7 +11,7 @@
 
 import re
 
-from idlelib.TreeWidget import TreeItem, TreeNode, ScrolledCanvas
+from TreeWidget import TreeItem, TreeNode, ScrolledCanvas
 
 from reprlib import Repr
 
@@ -139,5 +139,5 @@ def _object_browser(parent):
     root.mainloop()
 
 if __name__ == '__main__':
-    from idlelib.idle_test.htest import run
+    from idle_test.htest import run
     run(_object_browser)

@@ -1,5 +1,5 @@
 from tkinter import *
-from idlelib import macosxSupport
+import macosxSupport
 
 class ScrolledList:
 
@@ -141,5 +141,5 @@ def _scrolled_list(parent):
     root.mainloop()
 
 if __name__ == '__main__':
-    from idlelib.idle_test.htest import run
+    from idle_test.htest import run
     run(_scrolled_list)

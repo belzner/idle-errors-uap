@@ -12,16 +12,16 @@ import tkinter.messagebox as tkMessageBox
 import traceback
 import webbrowser
 
-from idlelib.MultiCall import MultiCallCreator
-from idlelib import WindowList
-from idlelib import SearchDialog
-from idlelib import GrepDialog
-from idlelib import ReplaceDialog
-from idlelib import PyParse
-from idlelib.configHandler import idleConf
-from idlelib import aboutDialog, textView, configDialog
-from idlelib import macosxSupport
-from idlelib import help
+from MultiCall import MultiCallCreator
+import WindowList
+import SearchDialog
+import GrepDialog
+import ReplaceDialog
+import PyParse
+from configHandler import idleConf
+import aboutDialog, textView, configDialog
+import macosxSupport
+import help
 
 # The default tab setting for a Text widget, in average-width characters.
 TK_TABWIDTH_DEFAULT = 8
@@ -89,13 +89,13 @@ helpDialog = HelpDialog()  # singleton instance, no longer used
 
 
 class EditorWindow(object):
-    from idlelib.Percolator import Percolator
-    from idlelib.ColorDelegator import ColorDelegator
-    from idlelib.UndoDelegator import UndoDelegator
-    from idlelib.IOBinding import IOBinding, filesystemencoding, encoding
-    from idlelib import Bindings
+    from Percolator import Percolator
+    from ColorDelegator import ColorDelegator
+    from UndoDelegator import UndoDelegator
+    from IOBinding import IOBinding, filesystemencoding, encoding
+    import Bindings
     from tkinter import Toplevel
-    from idlelib.MultiStatusBar import MultiStatusBar
+    from MultiStatusBar import MultiStatusBar
 
     help_url = None
 
@@ -673,11 +673,11 @@ class EditorWindow(object):
                 return
         head, tail = os.path.split(filename)
         base, ext = os.path.splitext(tail)
-        from idlelib import ClassBrowser
+        import ClassBrowser
         ClassBrowser.ClassBrowser(self.flist, base, [head])
 
     def open_path_browser(self, event=None):
-        from idlelib import PathBrowser
+        import PathBrowser
         PathBrowser.PathBrowser(self.flist)
 
     def open_turtle_demo(self, event = None):
@@ -1699,5 +1699,5 @@ def _editor_window(parent):  # htest #
     # edit.text.bind("<<close-window>>", edit.close_event)
 
 if __name__ == '__main__':
-    from idlelib.idle_test.htest import run
+    from idle_test.htest import run
     run(_editor_window)

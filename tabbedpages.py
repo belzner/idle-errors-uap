@@ -494,5 +494,5 @@ def _tabbed_pages(parent):
 
 
 if __name__ == '__main__':
-    from idlelib.idle_test.htest import run
+    from idle_test.htest import run
     run(_tabbed_pages)

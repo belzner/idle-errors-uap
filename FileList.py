@@ -6,7 +6,7 @@ import tkinter.messagebox as tkMessageBox
 class FileList:
 
     # N.B. this import overridden in PyShellFileList.
-    from idlelib.EditorWindow import EditorWindow
+    from EditorWindow import EditorWindow
 
     def __init__(self, root):
         self.root = root
@@ -111,7 +111,7 @@ class FileList:
 
 
 def _test():
-    from idlelib.EditorWindow import fixwordbreaks
+    from EditorWindow import fixwordbreaks
     import sys
     root = Tk()
     fixwordbreaks(root)

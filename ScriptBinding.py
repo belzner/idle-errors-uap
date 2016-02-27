@@ -21,10 +21,10 @@ import os
 import tabnanny
 import tokenize
 import tkinter.messagebox as tkMessageBox
-from idlelib import PyShell
+import PyShell
 
-from idlelib.configHandler import idleConf
-from idlelib import macosxSupport
+from configHandler import idleConf
+import macosxSupport
 
 indent_message = """Error: Inconsistent indentation detected!
 
