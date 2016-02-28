@@ -721,7 +721,7 @@ class ModifiedInterpreter(InteractiveInterpreter):
                   (lineno-1, offset-1)
         tkconsole.colorize_syntax_error(text, pos)
         tkconsole.resetoutput()
-        self.write("SyntaxError: %s\n" % msg)
+        self.write("You dun goofed\nSyntaxError: %s\n" % msg)
         tkconsole.showprompt()
 
     def showtraceback(self):
