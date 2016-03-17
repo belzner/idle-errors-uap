@@ -106,7 +106,8 @@ class ScriptBinding:
                 lineno += 1  #mark end of offending line
             pos = "0.0 + %d lines + %d chars" % (lineno-1, offset-1)
             editwin.colorize_syntax_error(text, pos)
-            self.errorbox("SyntaxError", "%-20s" % msg)
+            from SyntaxErrorHelper import writeSyntaxError
+            writeSyntaxError(shell.interp, msg, text)
             return False
         finally:
             shell.set_warning_stream(saved_stream)
