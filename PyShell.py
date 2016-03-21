@@ -722,7 +722,7 @@ class ModifiedInterpreter(InteractiveInterpreter):
         tkconsole.colorize_syntax_error(text, pos)
         tkconsole.resetoutput()
         from SyntaxErrorHelper import writeSyntaxError
-        writeSyntaxError(self, msg, text)
+        writeSyntaxError(self, value, text)
 
     def showtraceback(self):
         "Extend base class method to reset output properly"
@@ -1269,6 +1269,10 @@ class PyShell(OutputWindow):
             self.history.store(source)
         if self.text.get("end-2c") != "\n":
             self.text.insert("end-1c", "\n")
+        # linestart below causes line to include the prompt
+        # but if I try without it (or +4c) it counts the tab as one char
+        # and cuts off the beginning of the line
+        self.text.mark_set("startpos", "iomark linestart")
         self.text.mark_set("iomark", "end-1c")
         self.set_line_and_column()
 
