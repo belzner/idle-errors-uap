@@ -722,7 +722,7 @@ class ModifiedInterpreter(InteractiveInterpreter):
         tkconsole.colorize_syntax_error(text, pos)
         tkconsole.resetoutput()
         from SyntaxErrorHelper import writeSyntaxError
-        writeSyntaxError(self, value, text)
+        writeSyntaxError(self, value, tkconsole)
 
     def showtraceback(self):
         "Extend base class method to reset output properly"

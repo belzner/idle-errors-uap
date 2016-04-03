@@ -108,7 +108,7 @@ class ScriptBinding:
             editwin.colorize_syntax_error(text, pos)
             text.mark_set("startpos", "0.0")
             from SyntaxErrorHelper import writeSyntaxError
-            writeSyntaxError(shell.interp, value, text)
+            writeSyntaxError(shell.interp, value, editwin)
             return False
         finally:
             shell.set_warning_stream(saved_stream)
