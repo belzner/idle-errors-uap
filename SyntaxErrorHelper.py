@@ -21,7 +21,7 @@ def writeSyntaxError(shell, value, win):
     extramsg = ""
 
     # Check for missing closing bracket
-    hasBrackets = (HyperParser(win, linepos)
+    hasBrackets = (HyperParser(win, linepos+" lineend")
                    .get_surrounding_brackets())
     if hasBrackets is not None: # Has brackets at all
         matchedBrackets = (HyperParser(win, linepos)
