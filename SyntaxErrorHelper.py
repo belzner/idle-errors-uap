@@ -29,6 +29,8 @@ def writeSyntaxError(shell, value, win):
                            .get_surrounding_brackets(mustclose=True))
         if matchedBrackets is None: # No closing bracket
             extramsg = ERR_PAREN % int(hasBrackets[0].split('.')[0])
+            text.tag_remove("ERROR", "1.0", "end")
+            win.colorize_syntax_error(text, hasBrackets[0])
 
     try:
         tokens = list(tokenize.tokenize(io.BytesIO(bytes(errorline, 'utf-8')).readline))
