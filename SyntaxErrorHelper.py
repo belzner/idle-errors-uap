@@ -1,4 +1,5 @@
 from tkinter import END
+import ast
 import io
 import tokenize
 import keyword
@@ -14,8 +15,12 @@ def writeSyntaxError(shell, value, win):
     text = win.text
     msg = getattr(value, 'msg', '') or value or "<no detail available>"
     lineno = getattr(value, 'lineno', '') or 1
+    offset = getattr(value, 'offset', '') or 0
     linepos = "startpos + %d lines" % (lineno-1)
+    prevcode = text.get("startpos", linepos+" linestart")
     errorline = text.get(linepos, linepos+" lineend")
+    if prevcode.startswith('>>> '):
+        prevcode = prevcode[4:]
     if errorline.startswith('>>> '):
         errorline = errorline[4:]
 
@@ -59,7 +64,7 @@ def writeSyntaxError(shell, value, win):
                     extramsg = ERR_ASSIGN % lineno
                     break
 
-        # Check for using reserved word as variable name
+        # Check for using reserved word as variable name (assignment)
         equalsPos = -1
         for i in range(len(tokens)):
             if tokens[i].exact_type is tokenize.EQUAL:
@@ -74,6 +79,22 @@ def writeSyntaxError(shell, value, win):
                     else:
                         if i > 0 and tokens[i-1].exact_type is not tokenize.COMMA:
                             break
+
+        # Check for using reserved word as variable name (other cases)
+        for t in tokens:
+            if t.type is tokenize.NAME and keyword.iskeyword(t.string):
+                newtestline = errorline[:t.start[1]] + 'x' + errorline[t.end[1]:]
+                try:
+                    ast.parse(prevcode + newtestline)
+                    extramsg = ERR_RESERVED % (t.string, lineno)
+                    break
+                except SyntaxError as err:
+                    newlineno = getattr(err, 'lineno', '') or 1
+                    newoffset = getattr(err, 'offset', '') or 0
+                    if newlineno > lineno or (newlineno is lineno and newoffset > offset):
+                        extramsg = ERR_RESERVED % (t.string, lineno)
+                        break
+
     except Exception as e:
         print('error', e)
 
