@@ -648,8 +648,7 @@ class ModifiedInterpreter(InteractiveInterpreter):
             print('*** Error in script or command!\n'
                  'Traceback (most recent call last):',
                   file=self.tkconsole.stderr)
-            InteractiveInterpreter.showsyntaxerror(self, filename)
-            self.tkconsole.showprompt()
+            ModifiedInterpreter.showsyntaxerror(self, filename)
         else:
             self.runcode(code)
 
@@ -708,6 +707,13 @@ class ModifiedInterpreter(InteractiveInterpreter):
         tkconsole = self.tkconsole
         text = tkconsole.text
         text.tag_remove("ERROR", "1.0", "end")
+        try:
+            with open(filename, 'rb') as f:
+                source = f.read()
+            text.mark_set("startpos", "iomark linestart")
+            text.insert("startpos", source)
+        except IOError:
+            pass
         type, value, tb = sys.exc_info()
         msg = getattr(value, 'msg', '') or value or "<no detail available>"
         lineno = getattr(value, 'lineno', '') or 1
