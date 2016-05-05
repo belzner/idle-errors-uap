@@ -254,7 +254,7 @@ class InsertCommand(Command):
     alphanumeric = string.ascii_letters + string.digits + "_"
 
     def classify(self, c):
-        if c in self.alphanumeric:
+        if str(c) in self.alphanumeric:
             return "alphanumeric"
         if c == "\n":
             return "newline"

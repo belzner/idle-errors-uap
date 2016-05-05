@@ -99,4 +99,9 @@ def writeSyntaxError(shell, value, win):
         print('error', e)
 
     shell.write("\nSyntaxError: "+msg+"\n"+extramsg+"\n")
+    # Logging code for testing
+    #if not extramsg:
+    #    extramsg = msg
+    #with open("../error_results.txt", "a") as f:
+    #    f.write(extramsg + "\n")
     shell.tkconsole.showprompt()

@@ -1617,6 +1617,14 @@ def main():
         if tkversionwarning:
             shell.interp.runcommand("print('%s')" % tkversionwarning)
 
+        # Code for running tests and logging results
+        #files = [line.rstrip('\n') for line in open('../error_files.txt')]
+        #for script in files:
+        #    with open("../error_results.txt", "a") as f:
+        #        f.write(script + ", ")
+        #    shell.interp.prepend_syspath(script)
+        #    shell.interp.execfile(script)
+
     while flist.inversedict:  # keep IDLE running while files are open.
         root.mainloop()
     root.destroy()
